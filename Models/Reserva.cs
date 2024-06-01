@@ -15,16 +15,29 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
+            Hospedes = hospedes;
+            // IMPLEMENTADO!!!
+            bool sucesso = false;
+
+            try
+            {
+                if (hospedes.Count() <= Suite.Capacidade)
+                    {
+                        sucesso = true;
+                    }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Capacidade menor que a quantidade de hóspedes.", ex.Message);
+            }
+            if (sucesso)
             {
                 Hospedes = hospedes;
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                // IMPLEMENTADO!!!
+                throw new ArgumentException("Capacidade menor que a quantidade de hóspedes.");
             }
         }
 
@@ -35,23 +48,22 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            // IMPLEMENTADO!!!
+            return Hospedes.Count();
         }
 
         public decimal CalcularValorDiaria()
         {
             // TODO: Retorna o valor da diária
             // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
+            // IMPLEMENTADO!!!
+            decimal valor = DiasReservados * Suite.ValorDiaria;
 
             // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
+            // IMPLEMENTADO!!!
+            if (DiasReservados > 9)
             {
-                valor = 0;
+                valor = valor - (10/100)*valor;
             }
 
             return valor;
